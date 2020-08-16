@@ -1,0 +1,233 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <title>Matriz</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center " style="background-color: #343a40; height: 200px">
+            <img class="align-self-center" src="https://ulbra-to.br/vestibular/Ciencia-da-Computacao/logo-curso.png" style="height: 125px">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center mt-3">
+        <div class="col-6 md-3">
+            <select class="custom-select" id="selectColunslines">
+                <option selected>Selecione o grid</option>
+                <option value="6">6 x 6</option>
+                <option value="8">8 x 8</option>
+                <option value="10">10 x 10</option>
+            </select>
+        </div>
+
+        <div class="col-6 md-3">
+            <select class="custom-select" id="selectlimit">
+                <option selected>Selecione um valor</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="col-2 mt-3">
+            <button class="btn btn-dark" onclick="GerarMatrix()">Gerar Tabela</button>
+        </div>
+
+        <div class="col-10  mt-3">
+            <button class="btn btn-dark" id="alterarCelula" onclick="AlteraCelula()">Alterar célula aleatória</button>
+            <button class="btn btn-dark" id="continuar" onclick="Avalanche()" style="display: none">Prosseguir</button>
+        </div>
+
+        <div class="col-8 mt-3 d-flex justify-content-center">
+            <table id="matrix">
+
+            </table>
+        </div>
+        <div class="col-4 mt-3 d-flex justify-content-center">
+            <dl id="lista">
+
+            </dl>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var matrix = [];
+    var colun_lines = '';
+    var limit = '';
+    var colun = '';
+    var line = '';
+
+    function GerarMatrix() {
+        colun_lines = parseInt(document.getElementById('selectColunslines').value);
+        limit = parseInt(document.getElementById('selectlimit').value);
+        matrix = [];
+
+        for(var b=0;b<colun_lines;b++) {
+            matrix.push([]);
+            for (var y=0;y<colun_lines;y++) {
+                var x = Math.floor((Math.random() * limit-1) + 1);
+                matrix[b].push(x);
+            }
+        }
+
+        document.getElementById('matrix').innerHTML = '';
+
+        for(var i=0;i<matrix.length;i++) {
+            var idTh = '.matrix'+i;
+            document.getElementById('matrix').insertAdjacentHTML('beforeend','<tr id="'+idTh+'"></tr>');
+            for (var z=0;z<matrix[i].length;z++) {
+                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td>'+matrix[i][z]+'</td>');
+            }
+        }
+    }
+    function AlteraCelula() {
+        colun_lines = parseInt(document.getElementById('selectColunslines').value)-1;
+        limit = parseInt(document.getElementById('selectlimit').value);
+        colun = Math.floor((Math.random() * colun_lines-1) + 1);
+        line = Math.floor((Math.random() * colun_lines-1) + 1);
+
+        matrix[line][colun]++;
+
+        document.getElementById('matrix').innerHTML = '';
+
+        for(var i=0;i<matrix.length;i++) {
+            var idTh = '.matrix'+i;
+            document.getElementById('matrix').insertAdjacentHTML('beforeend','<tr id="'+idTh+'"></tr>');
+            for (var z=0;z<matrix[i].length;z++) {
+                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td>'+matrix[i][z]+'</td>');
+            }
+        }
+
+        Verifica();
+    }
+
+    function Verifica() {
+        var allRight = true;
+        var cont = 0;
+        var allRight1 = true;
+        var cont1 = 0;
+
+        while (allRight !== false) {
+            allRight1 = true;
+            cont1 = 0;
+            while (allRight1 !== false) {
+                if (matrix[cont][cont1] >= limit) {
+                    allRight = false;
+                    allRight1 = false;
+                    colun = cont1;
+                    line = cont;
+                    var displayColun = cont1 + 1;
+                    var displayLinha = cont + 1;
+                    document.getElementById('lista').insertAdjacentHTML('beforeend','<dt>Avalanche! Coluna: '+displayColun+'; Linha: '+displayLinha+';</dt>');
+                    document.getElementById('alterarCelula').style.display = 'none';
+                    document.getElementById('continuar').style.display = '';
+                } else {
+                    document.getElementById('alterarCelula').style.display = '';
+                    document.getElementById('continuar').style.display = 'none';
+                }
+                if (cont1 === colun_lines) {
+                    allRight1 = false;
+                }
+                cont1++;
+            }
+            if (cont === colun_lines) {
+                allRight = false;
+            }
+            cont++;
+        }
+    }
+
+    function Avalanche() {
+        if (colun === 0) {
+            if (line === 0) {
+                document.getElementById('alterarCelula').style.border = '';
+                matrix[line][colun]-=4;
+                matrix[line][colun+1]++;
+                matrix[line+1][colun]++;
+            } else if (line === colun_lines) {
+                matrix[line][colun]-=4;
+                matrix[line][colun+1]++;
+                matrix[line-1][colun]++;
+            } else {
+                matrix[line][colun]-=4;
+                matrix[line-1][colun]++;
+                matrix[line][colun+1]++;
+                matrix[line+1][colun]++;
+            }
+        } else if (colun === colun_lines) {
+            if (line === 0) {
+                matrix[line][colun]-=4;
+                matrix[line+1][colun]++;
+                matrix[line][colun-1]++;
+            } else if (line === colun_lines) {
+                matrix[line][colun]-=4;
+                matrix[line-1][colun]++;
+                matrix[line][colun-1]++;
+            } else {
+                matrix[line][colun]-=4;
+                matrix[line-1][colun]++;
+                matrix[line][colun-1]++;
+                matrix[line+1][colun]++;
+            }
+        } else {
+            if (line === 0) {
+                matrix[line][colun]-=4;
+                matrix[line][colun-1]++;
+                matrix[line][colun+1]++;
+                matrix[line+1][colun]++;
+            } else if (line === colun_lines) {
+                matrix[line][colun]-=4;
+                matrix[line-1][colun]++;
+                matrix[line][colun-1]++;
+                matrix[line][colun+1]++;
+            } else {
+                matrix[line][colun]-=4;
+                matrix[line-1][colun]++;
+                matrix[line][colun-1]++;
+                matrix[line][colun+1]++;
+                matrix[line+1][colun]++;
+            }
+        }
+
+        document.getElementById('matrix').innerHTML = '';
+
+        for(var i=0;i<matrix.length;i++) {
+            var idTh = '.matrix'+i;
+            document.getElementById('matrix').insertAdjacentHTML('beforeend','<tr id="'+idTh+'"></tr>');
+            for (var z=0;z<matrix[i].length;z++) {
+                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td>'+matrix[i][z]+'</td>');
+            }
+        }
+
+        Verifica();
+    }
+</script>
+</html>
