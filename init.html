@@ -7,18 +7,18 @@
     <style>
         table {
             font-family: arial, sans-serif;
-            border-collapse: collapse;
+            backgroundColor-collapse: collapse;
             width: 100%;
         }
 
         td, th {
-            border: 1px solid #dddddd;
+            backgroundColor: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
 
         tr:nth-child(even) {
-            background-color: #dddddd;
+            backgroundColor: #dddddd;
         }
     </style>
     <title>Matriz</title>
@@ -45,7 +45,6 @@
         <div class="col-6 md-3">
             <select class="custom-select" id="selectlimit">
                 <option selected>Selecione um valor</option>
-                <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
@@ -101,10 +100,11 @@
         document.getElementById('matrix').innerHTML = '';
 
         for(var i=0;i<matrix.length;i++) {
-            var idTh = '.matrix'+i;
+            var idTh = 'matrix'+i;
             document.getElementById('matrix').insertAdjacentHTML('beforeend','<tr id="'+idTh+'"></tr>');
             for (var z=0;z<matrix[i].length;z++) {
-                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td>'+matrix[i][z]+'</td>');
+			    var idTd = idTh+z;
+                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td id="'+idTd+'"><span>'+matrix[i][z]+'</span></td>');
             }
         }
     }
@@ -119,10 +119,11 @@
         document.getElementById('matrix').innerHTML = '';
 
         for(var i=0;i<matrix.length;i++) {
-            var idTh = '.matrix'+i;
+            var idTh = 'matrix'+i;
             document.getElementById('matrix').insertAdjacentHTML('beforeend','<tr id="'+idTh+'"></tr>');
             for (var z=0;z<matrix[i].length;z++) {
-                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td>'+matrix[i][z]+'</td>');
+				var idTd = idTh+z;
+                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td id="'+idTd+'"><span>'+matrix[i][z]+'</span></td>');
             }
         }
 
@@ -168,62 +169,246 @@
     function Avalanche() {
         if (colun === 0) {
             if (line === 0) {
-                document.getElementById('alterarCelula').style.border = '';
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+line+(colun+1);
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line][colun+1]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+                var idTh3 = 'matrix'+(line+1)+colun;
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line+1][colun]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
             } else if (line === colun_lines) {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColorColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+line+(colun+1);
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line][colun+1]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+(line-1)+colun;
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line-1][colun]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
             } else {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+(line-1)+colun;
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line-1][colun]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+line+(colun+1);
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line][colun+1]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
+				var idTh4 = 'matrix'+(line+1)+colun;
+                document.getElementById(idTh4).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh4), 3000000000);
                 matrix[line+1][colun]++;
+                document.getElementById(idTh4).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
+                document.getElementById(idTh4).style.backgroundColor = 'white';
             }
         } else if (colun === colun_lines) {
             if (line === 0) {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+line+1+colun;
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line+1][colun]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+line+(colun-1);
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line][colun-1]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
             } else if (line === colun_lines) {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+(line-1)+colun;
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line-1][colun]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+line+(colun-1);
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line][colun-1]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
             } else {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+(line-1)+colun;
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line-1][colun]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+line+(colun-1);
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line][colun-1]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
+				var idTh4 = 'matrix'+(line+1)+colun;
+                document.getElementById(idTh4).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh4), 3000000000);
                 matrix[line+1][colun]++;
+                document.getElementById(idTh4).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
+                document.getElementById(idTh4).style.backgroundColor = 'white';
             }
         } else {
             if (line === 0) {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+line+(colun-1);
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line][colun-1]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+line+(colun+1);
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line][colun+1]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
+				var idTh4 = 'matrix'+(line+1)+colun;
+                document.getElementById(idTh4).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh4), 3000000000);
                 matrix[line+1][colun]++;
+                document.getElementById(idTh4).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
+                document.getElementById(idTh4).style.backgroundColor = 'white';
+
             } else if (line === colun_lines) {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+(line-1)+colun;
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line-1][colun]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+line+(colun-1);
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line][colun-1]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
+                document.getElementById(idTh3).style.backgroundColor = 'white';
+
+				var idTh4 = 'matrix'+line+(colun+1);
+                document.getElementById(idTh4).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh4), 3000000000);
                 matrix[line][colun+1]++;
+                document.getElementById(idTh4).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
+                document.getElementById(idTh4).style.backgroundColor = 'white';
+
             } else {
+				var idTh = 'matrix'+line+colun;
+                document.getElementById(idTh).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh), 3000000000);
                 matrix[line][colun]-=4;
+                document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+                document.getElementById(idTh).style.backgroundColor = 'white';
+
+				var idTh2 = 'matrix'+(line-1)+colun;
+                document.getElementById(idTh2).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh2), 3000000000);
                 matrix[line-1][colun]++;
+                document.getElementById(idTh2).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
+                document.getElementById(idTh2).style.backgroundColor = 'white';
+
+				var idTh3 = 'matrix'+line+(colun-1);
+                document.getElementById(idTh3).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh3), 3000000000);
                 matrix[line][colun-1]++;
+                document.getElementById(idTh3).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
+                window.setTimeout(document.getElementById(idTh3).style.backgroundColor = 'white', 3000000000);
+
+				var idTh4 = 'matrix'+line+(colun+1);
+                document.getElementById(idTh4).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh4), 3000000000);
                 matrix[line][colun+1]++;
+                document.getElementById(idTh4).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
+                document.getElementById(idTh4).style.backgroundColor = 'white';
+
+				var idTh5 = 'matrix'+(line+1)+colun;
+                document.getElementById(idTh5).style.backgroundColor = 'red';
+                window.setTimeout(console.log(idTh5), 3000000000);
                 matrix[line+1][colun]++;
-            }
-        }
-
-        document.getElementById('matrix').innerHTML = '';
-
-        for(var i=0;i<matrix.length;i++) {
-            var idTh = '.matrix'+i;
-            document.getElementById('matrix').insertAdjacentHTML('beforeend','<tr id="'+idTh+'"></tr>');
-            for (var z=0;z<matrix[i].length;z++) {
-                document.getElementById(idTh).insertAdjacentHTML('beforeend','<td>'+matrix[i][z]+'</td>');
+                document.getElementById(idTh5).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
+                document.getElementById(idTh5).style.backgroundColor = 'white';
             }
         }
 
