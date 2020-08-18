@@ -169,46 +169,41 @@
     function editarSuperior() {
         var idTh = 'matrix'+(line-1)+colun;
         document.getElementById(idTh).style.backgroundColor = 'red';
-        window.setTimeout(function(){matrix[line-1][colun]++;
-            document.getElementById(idTh).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
-            document.getElementById(idTh).style.backgroundColor = 'green';}, 5000);
-
+        matrix[line-1][colun]++;
+        document.getElementById(idTh).innerHTML = '<span>'+matrix[line-1][colun]+'</span>';
+        document.getElementById(idTh).style.backgroundColor = 'white';
     }
 
     function editarInferior() {
         var idTh = 'matrix'+(line+1)+colun;
         document.getElementById(idTh).style.backgroundColor = 'red';
-        window.setTimeout(function(){matrix[line+1][colun]++;
-            document.getElementById(idTh).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
-            document.getElementById(idTh).style.backgroundColor = 'green';}, 5000);
-
+        matrix[line+1][colun]++;
+        document.getElementById(idTh).innerHTML = '<span>'+matrix[line+1][colun]+'</span>';
+        document.getElementById(idTh).style.backgroundColor = 'white';
     }
 
     function editarEsquerda() {
         var idTh = 'matrix'+line+(colun-1);
         document.getElementById(idTh).style.backgroundColor = 'red';
-        window.setTimeout(function(){matrix[line][colun-1]++;
-            document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
-            document.getElementById(idTh).style.backgroundColor = 'green';}, 5000);
-
+        matrix[line][colun-1]++;
+        document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun-1]+'</span>';
+        document.getElementById(idTh).style.backgroundColor = 'white';
     }
 
     function editarDireita() {
         var idTh = 'matrix'+line+(colun+1);
         document.getElementById(idTh).style.backgroundColor = 'red';
-        window.setTimeout(function(){matrix[line][colun+1]++;
-            document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
-            document.getElementById(idTh).style.backgroundColor = 'green';}, 5000);
-
+        matrix[line][colun+1]++;
+        document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun+1]+'</span>';
+        document.getElementById(idTh).style.backgroundColor = 'white';
     }
 
     function editarFoco() {
         var idTh = 'matrix'+line+colun;
         document.getElementById(idTh).style.backgroundColor = 'red';
-        window.setTimeout(function(){matrix[line][colun]-=4;
-            document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
-            document.getElementById(idTh).style.backgroundColor = 'green';}, 5000);
-
+        matrix[line][colun]-=4;
+        document.getElementById(idTh).innerHTML = '<span>'+matrix[line][colun]+'</span>';
+        document.getElementById(idTh).style.backgroundColor = 'white';
     }
 
     function Avalanche() {
