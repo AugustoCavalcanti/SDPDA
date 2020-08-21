@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class PilhaDeAreiaComponent implements OnInit {
   grid = null;
   limit = null;
-  colunlines = null;
   colun = null;
   line = null;
   matriz = [];
@@ -57,12 +56,12 @@ export class PilhaDeAreiaComponent implements OnInit {
           this.listaDeAvalanches.push('Avalanche! Coluna: ' + (this.colun + 1) + '; Linha: ' + (this.line + 1) + ';');
           this.buttom = 'prosseguir';
         }
-        if (cont1 === this.grid) {
+        if (cont1 === (this.grid - 1)) {
           allRight1 = false;
         }
         cont1++;
       }
-      if (cont === this.grid) {
+      if (cont === (this.grid - 1)) {
         this.buttom = 'alterar';
         allRight = false;
       }
@@ -91,13 +90,13 @@ export class PilhaDeAreiaComponent implements OnInit {
   }
 
   Avalanche() {
-    if (this.colun === 0) {
-      if (this.line === 0) {
+    if (this.colun == 0) {
+      if (this.line == 0) {
         this.editarFoco();
         this.editarDireita();
         this.editarInferior();
 
-      } else if (this.line === this.grid) {
+      } else if (this.line == (this.grid - 1)) {
         this.editarFoco();
         this.editarDireita();
         this.editarSuperior();
@@ -108,13 +107,13 @@ export class PilhaDeAreiaComponent implements OnInit {
         this.editarDireita();
         this.editarInferior();
       }
-    } else if (this.colun === this.grid) {
-      if (this.line === 0) {
+    } else if (this.colun == (this.grid - 1)) {
+      if (this.line == 0) {
         this.editarFoco();
         this.editarInferior();
         this.editarEsquerda();
 
-      } else if (this.line === this.grid) {
+      } else if (this.line == (this.grid - 1)) {
         this.editarFoco();
         this.editarSuperior();
         this.editarEsquerda();
@@ -126,13 +125,13 @@ export class PilhaDeAreiaComponent implements OnInit {
         this.editarInferior();
       }
     } else {
-      if (this.line === 0) {
+      if (this.line == 0) {
         this.editarFoco();
         this.editarEsquerda();
         this.editarDireita();
         this.editarInferior();
 
-      } else if (this.line === this.grid) {
+      } else if (this.line == (this.grid - 1)) {
         this.editarFoco();
         this.editarSuperior();
         this.editarEsquerda();

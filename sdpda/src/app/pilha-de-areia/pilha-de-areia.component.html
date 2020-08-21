@@ -31,10 +31,10 @@
         </select>
       </label>
       <button class="btn-sm btn-dark" style="width: 100px" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
-      <div *ngIf="buttom == 'alterar'; else prosseguir">
+      <div *ngIf="buttom == 'alterar'">
         <button class="btn-sm btn-dark" style="width: 100px" (click)="AlteraCelula()">Alterar célula aleatória</button>
       </div>
-      <div #prosseguir>
+      <div *ngIf="buttom == 'prosseguir'">
         <button class="btn-sm btn-dark" style="width: 100px" (click)="Avalanche()">Prosseguir</button>
       </div>
 
