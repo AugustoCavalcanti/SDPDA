@@ -1,4 +1,3 @@
-<body>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 d-flex justify-content-center " style="background-color: #343a40; height: 200px">
@@ -6,56 +5,63 @@
     </div>
   </div>
 </div>
-<div class="container-flluid">
+<div class="container-fluid">
   <div class="row">
     <form #dadosMatriz="ngForm">
-      <label for="grid">
-        <select class="custom-select form-control" id="grid" name="grid" [(ngModel)]="grid">
-          <option >Selecione o grid</option>
-          <option value="6">6 x 6</option>
-          <option value="8">8 x 8</option>
-          <option value="10">10 x 10</option>
-        </select>
-      </label>
-
-      <label for="limit">
-        <select class="custom-select" id="limit" name="limit" [(ngModel)]="limit">
-          <option value="">Selecione um valor</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </label>
-      <button class="btn-sm btn-dark" style="width: 100px" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
-      <div *ngIf="buttom == 'alterar'">
+      <div class="col-4">
+        <label for="grid">
+          <select class="custom-select form-control" id="grid" name="grid" [(ngModel)]="grid">
+            <option >Selecione o grid</option>
+            <option value="6">6 x 6</option>
+            <option value="8">8 x 8</option>
+            <option value="10">10 x 10</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-4">
+        <label for="limit">
+          <select class="custom-select" id="limit" name="limit" [(ngModel)]="limit">
+            <option value="">Selecione um valor</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-dark" style="width: 100px" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
+      </div>
+      <div *ngIf="buttom == 'alterar'" class="col-2">
         <button class="btn-sm btn-dark" style="width: 100px" (click)="AlteraCelula()">Alterar célula aleatória</button>
       </div>
-      <div *ngIf="buttom == 'prosseguir'">
-        <button class="btn-sm btn-dark" style="width: 100px" (click)="Avalanche()">Prosseguir</button>
+      <div *ngIf="buttom == 'prosseguir'" class="col-2">
+        <button class="btn btn-dark" style="width: 100px" (click)="Avalanche()">Prosseguir</button>
       </div>
-
     </form>
-    <div class="col-8 mt-3 d-flex justify-content-center">
-      <table id="matrix">
-        <tr *ngFor="let linha of matriz">
-          <th *ngFor="let coluna of linha">
-            {{ coluna }}
-          </th>
-        </tr>
-      </table>
-    </div>
-    <div class="col-4 mt-3 d-flex justify-content-center">
-      <dl id="lista">
-        <dt *ngFor="let avalanche of listaDeAvalanches">
-          {{ avalanche }}
-        </dt>
-      </dl>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="col-6">
+        <table id="matrix" class="table table-bordered">
+          <tr *ngFor="let linha of matriz">
+            <th *ngFor="let coluna of linha">
+              {{ coluna }}
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div class="col-4 mt-3 d-flex justify-content-center">
+        <dl id="lista">
+          <dt *ngFor="let avalanche of listaDeAvalanches">
+            {{ avalanche }}
+          </dt>
+        </dl>
+      </div>
     </div>
   </div>
 </div>
-
-</body>
