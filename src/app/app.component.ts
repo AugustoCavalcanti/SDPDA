@@ -22,6 +22,7 @@ export class AppComponent {
   GerarMatrix(dadosMatriz) {
     this.grid = Number(this.grid);
     this.limit = Number(this.limit);
+    this.matriz = [];
 
     for ( let b = 0; b < this.grid; b++) {
       this.matriz.push([]);
