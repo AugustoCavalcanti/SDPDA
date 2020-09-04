@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-pilha-de-areia',
-  templateUrl: './pilha-de-areia.component.html',
-  styleUrls: ['./pilha-de-areia.component.css']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class PilhaDeAreiaComponent implements OnInit {
+export class AppComponent {
+  title = 'SDPDA2';
+
   grid = null;
   limit = null;
   colun = null;
@@ -148,8 +150,4 @@ export class PilhaDeAreiaComponent implements OnInit {
 
     this.Verifica();
   }
-
-  ngOnInit(): void {
-  }
-
 }

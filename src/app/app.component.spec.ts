@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'sdpda'`, () => {
+  it(`should have as title 'SDPDA2'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('sdpda');
+    expect(app.title).toEqual('SDPDA2');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('sdpda app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('SDPDA2 app is running!');
   });
 });

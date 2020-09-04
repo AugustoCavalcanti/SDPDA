@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PilhaDeAreiaComponent} from './pilha-de-areia/pilha-de-areia.component';
 
-const routes: Routes = [
-  {path: '', component: PilhaDeAreiaComponent}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
