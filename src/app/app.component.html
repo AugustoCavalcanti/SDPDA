@@ -44,8 +44,8 @@
       <div class="col-6">
         <table id="matrix" class="table table-bordered">
           <tr *ngFor="let linha of matriz">
-            <th *ngFor="let coluna of linha">
-              {{ coluna }}
+            <th *ngFor="let coluna of linha" style="background-color:{{ coluna.cor }};">
+              {{ coluna.numero }}
             </th>
           </tr>
         </table>
