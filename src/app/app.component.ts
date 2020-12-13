@@ -15,6 +15,8 @@ export class AppComponent {
   line = null;
   matriz = [];
   listaDeAvalanches = [];
+  repeticao = 0;
+  quantidadeRepeticoes = null;
 
   buttom = 'alterar';
 
@@ -38,6 +40,7 @@ export class AppComponent {
     this.colun = Math.floor((Math.random() * this.grid - 1) + 1);
     this.line = Math.floor((Math.random() * this.grid - 1) + 1);
     this.matriz[this.line][this.colun].numero++;
+    this.repeticao++;
 
     this.Verifica();
   }
@@ -57,7 +60,7 @@ export class AppComponent {
           allRight1 = false;
           this.colun = cont1;
           this.line = cont;
-          this.listaDeAvalanches.push('Avalanche! Coluna: ' + (this.colun + 1) + '; Linha: ' + (this.line + 1) + ';');
+          this.listaDeAvalanches.push('Avalanche! Linha: ' + (this.line + 1) + '; Coluna: ' + (this.colun + 1) + '; Repetição: ' + this.repeticao + '.');
           this.AvalancheCor();
           this.buttom = 'prosseguir';
         } else {
@@ -235,6 +238,48 @@ export class AppComponent {
         this.editarCorDireita();
         this.editarCorInferior();
       }
+    }
+  }
+
+  AlteraCelulaContinua() {
+    while (this.repeticao < this.quantidadeRepeticoes) {
+      this.colun = Math.floor((Math.random() * this.grid - 1) + 1);
+      this.line = Math.floor((Math.random() * this.grid - 1) + 1);
+      this.matriz[this.line][this.colun].numero++;
+      this.repeticao++;
+
+      this.VerificaContinua();
+    }
+  }
+
+  VerificaContinua() {
+    let allRight = true;
+    let cont = 0;
+    let allRight1 = true;
+    let cont1 = 0;
+
+    while (allRight !== false) {
+      allRight1 = true;
+      cont1 = 0;
+      while (allRight1 !== false) {
+        if (this.matriz[cont][cont1].numero >= this.limit) {
+          allRight = false;
+          allRight1 = false;
+          this.colun = cont1;
+          this.line = cont;
+          this.listaDeAvalanches.push('Avalanche! Linha: ' + (this.line + 1) + '; Coluna: ' + (this.colun + 1) + '; Repetição: ' + this.repeticao + '.');
+          this.AvalancheCor();
+          this.Avalanche();
+        }
+        if (cont1 === (this.grid - 1)) {
+          allRight1 = false;
+        }
+        cont1++;
+      }
+      if (cont === (this.grid - 1)) {
+        allRight = false;
+      }
+      cont++;
     }
   }
 }

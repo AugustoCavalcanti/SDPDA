@@ -29,6 +29,9 @@
             <option value="10">10</option>
           </select>
         </label>
+        <label>
+          <input type="text" class="text-dark" id="quantidadeRepeticoes" name="quantidadeRepeticoes" [(ngModel)]="quantidadeRepeticoes">
+        </label>
         <div class="btn-group">
           <button class="btn-sm btn-dark" style="width: 100px" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
           <div *ngIf="buttom == 'alterar'">
@@ -37,6 +40,7 @@
           <div *ngIf="buttom == 'prosseguir'">
             <button class="btn-sm btn-dark" style="width: 100px" (click)="Avalanche()">Prosseguir</button>
           </div>
+          <button class="btn-sm btn-dark" style="width: 100px" (click)="AlteraCelulaContinua()">Repetição continua</button>
         </div>
       </form>
     </div>
