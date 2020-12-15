@@ -17,6 +17,7 @@ export class AppComponent {
   listaDeAvalanches = [];
   repeticao = 0;
   quantidadeRepeticoes = null;
+  quantidadeAvalanches = 0;
 
   buttom = 'alterar';
 
@@ -26,6 +27,8 @@ export class AppComponent {
     this.grid = Number(this.grid);
     this.limit = Number(this.limit);
     this.matriz = [];
+    this.repeticao = 0;
+    this.quantidadeAvalanches = 0;
 
     for ( let b = 0; b < this.grid; b++) {
       this.matriz.push([]);
@@ -60,7 +63,8 @@ export class AppComponent {
           allRight1 = false;
           this.colun = cont1;
           this.line = cont;
-          this.listaDeAvalanches.push('Avalanche! Linha: ' + (this.line + 1) + '; Coluna: ' + (this.colun + 1) + '; Repetição: ' + this.repeticao + '.');
+          this.quantidadeAvalanches++;
+          this.listaDeAvalanches.push('Avalanche! Linha: ' + (this.line + 1) + '; Coluna: ' + (this.colun + 1) + '; Repetição: ' + this.repeticao + '; Avalanche Nº: ' + this.quantidadeAvalanches + '.');
           this.AvalancheCor();
           this.buttom = 'prosseguir';
         } else {
