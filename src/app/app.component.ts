@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Celula} from './celula.model';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-root',

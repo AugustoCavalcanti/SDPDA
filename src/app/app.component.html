@@ -1,50 +1,53 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center " style="background-color: #343a40; height: 200px">
-      <img class="align-self-center" src="https://ulbra-to.br/vestibular/Ciencia-da-Computacao/logo-curso.png" style="height: 125px">
-    </div>
+<mat-toolbar color="primary">
+  <div>
+    <span>Simulador De Pilha De Areia</span>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="w-25">
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-card>
+    <mat-card-content>
       <form #dadosMatriz="ngForm">
-        <label for="grid">
-          <select class="custom-select form-control" id="grid" name="grid" [(ngModel)]="grid">
-            <option >Selecione o grid</option>
-            <option value="6">6 x 6</option>
-            <option value="8">8 x 8</option>
-            <option value="10">10 x 10</option>
-          </select>
-        </label>
-        <label for="limit">
-          <select class="custom-select" id="limit" name="limit" [(ngModel)]="limit">
-            <option value="" >Selecione um valor</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </label>
-        <label>
-          <input type="text" class="text-dark" id="quantidadeRepeticoes" name="quantidadeRepeticoes" [(ngModel)]="quantidadeRepeticoes">
-        </label>
-        <div class="btn-group">
-          <button class="btn-sm btn-dark" style="width: 100px" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
-          <div *ngIf="buttom == 'alterar'">
-            <button class="btn-sm btn-dark" style="width: 100px" (click)="AlteraCelula()">Alterar célula aleatória</button>
+        <mat-card>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Tamanho do grid</mat-label>
+              <mat-select id="grid" name="grid" [(ngModel)]="grid">
+                <mat-option value="6">6 x 6</mat-option>
+                <mat-option value="8">8 x 8</mat-option>
+                <mat-option value="10">10 x 10</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Valor Limit</mat-label>
+              <mat-select id="limit" name="limit" [(ngModel)]="limit">
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+                <mat-option value="6">6</mat-option>
+                <mat-option value="7">7</mat-option>
+                <mat-option value="8">8</mat-option>
+                <mat-option value="9">9</mat-option>
+                <mat-option value="10">10</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Quantidade De repetições</mat-label>
+              <input matInput id="quantidadeRepeticoes" name="quantidadeRepeticoes" [(ngModel)]="quantidadeRepeticoes">
+            </mat-form-field>
           </div>
-          <div *ngIf="buttom == 'prosseguir'">
-            <button class="btn-sm btn-dark" style="width: 100px" (click)="Avalanche()">Prosseguir</button>
+
+          <div>
+            <button mat-flat-button color="primary" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
+            <button *ngIf="buttom == 'alterar'" mat-flat-button color="primary" (click)="AlteraCelula()">Alterar célula aleatória</button>
+            <button *ngIf="buttom == 'prosseguir'" mat-flat-button color="primary" (click)="Avalanche()">Prosseguir</button>
+            <button mat-flat-button color="primary" (click)="AlteraCelulaContinua()">Repetição continua</button>
           </div>
-          <button class="btn-sm btn-dark" style="width: 100px" (click)="AlteraCelulaContinua()">Repetição continua</button>
-        </div>
+
+        </mat-card>
+
       </form>
-    </div>
-    <div class="w-50">
+    </mat-card-content>
       <div class="col-6">
         <table id="matrix" class="table table-bordered">
           <tr *ngFor="let linha of matriz">
@@ -54,7 +57,6 @@
           </tr>
         </table>
       </div>
-    </div>
     <div class="w-25 mt-3 d-flex justify-content-center">
       <dl id="lista">
         <dt *ngFor="let avalanche of listaDeAvalanches">
@@ -62,5 +64,5 @@
         </dt>
       </dl>
     </div>
-  </div>
-</div>
+  </mat-card>
+</mat-sidenav-container>
