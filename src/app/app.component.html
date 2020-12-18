@@ -4,65 +4,12 @@
   </div>
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
-  <mat-card>
-    <mat-card-content>
-      <form #dadosMatriz="ngForm">
-        <mat-card>
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Tamanho do grid</mat-label>
-              <mat-select id="grid" name="grid" [(ngModel)]="grid">
-                <mat-option value="6">6 x 6</mat-option>
-                <mat-option value="8">8 x 8</mat-option>
-                <mat-option value="10">10 x 10</mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Valor Limit</mat-label>
-              <mat-select id="limit" name="limit" [(ngModel)]="limit">
-                <mat-option value="4">4</mat-option>
-                <mat-option value="5">5</mat-option>
-                <mat-option value="6">6</mat-option>
-                <mat-option value="7">7</mat-option>
-                <mat-option value="8">8</mat-option>
-                <mat-option value="9">9</mat-option>
-                <mat-option value="10">10</mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Quantidade De repetições</mat-label>
-              <input matInput id="quantidadeRepeticoes" name="quantidadeRepeticoes" [(ngModel)]="quantidadeRepeticoes">
-            </mat-form-field>
-          </div>
-
-          <div>
-            <button mat-flat-button color="primary" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
-            <button *ngIf="buttom == 'alterar'" mat-flat-button color="primary" (click)="AlteraCelula()">Alterar célula aleatória</button>
-            <button *ngIf="buttom == 'prosseguir'" mat-flat-button color="primary" (click)="Avalanche()">Prosseguir</button>
-            <button mat-flat-button color="primary" (click)="AlteraCelulaContinua()">Repetição continua</button>
-          </div>
-
-        </mat-card>
-
-      </form>
-    </mat-card-content>
-      <div class="col-6">
-        <table id="matrix" class="table table-bordered">
-          <tr *ngFor="let linha of matriz">
-            <th *ngFor="let coluna of linha" style="background-color:{{ coluna.cor }};">
-              {{ coluna.numero }}
-            </th>
-          </tr>
-        </table>
-      </div>
-    <div class="w-25 mt-3 d-flex justify-content-center">
-      <dl id="lista">
-        <dt *ngFor="let avalanche of listaDeAvalanches">
-          {{ avalanche }}
-        </dt>
-      </dl>
-    </div>
-  </mat-card>
+  <mat-tab-group>
+    <mat-tab label="First">
+      <app-simulador-com-animacao></app-simulador-com-animacao>
+    </mat-tab>
+    <mat-tab label="Second">
+      <app-simulador-sem-animacao></app-simulador-sem-animacao>
+    </mat-tab>
+  </mat-tab-group>
 </mat-sidenav-container>

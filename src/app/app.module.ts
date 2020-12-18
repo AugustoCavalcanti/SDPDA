@@ -14,10 +14,15 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
+import {MatTabsModule} from "@angular/material/tabs";
+import { SimuladorComAnimacaoComponent } from './simulador-com-animacao/simulador-com-animacao.component';
+import { SimuladorSemAnimacaoComponent } from './simulador-sem-animacao/simulador-sem-animacao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SimuladorComAnimacaoComponent,
+    SimuladorSemAnimacaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatCheckboxModule,
     MatDividerModule,
     MatButtonModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
