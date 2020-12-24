@@ -17,6 +17,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatTabsModule} from "@angular/material/tabs";
 import { SimuladorComAnimacaoComponent } from './simulador-com-animacao/simulador-com-animacao.component';
 import { SimuladorSemAnimacaoComponent } from './simulador-sem-animacao/simulador-sem-animacao.component';
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SimuladorSemAnimacaoComponent } from './simulador-sem-animacao/simulado
     MatDividerModule,
     MatButtonModule,
     MatTabsModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

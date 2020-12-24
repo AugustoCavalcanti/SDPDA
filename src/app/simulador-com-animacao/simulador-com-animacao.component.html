@@ -39,20 +39,17 @@
   </mat-card-content>
 </mat-card>
 <mat-card>
-  <div class="col-6">
-    <table id="matrix" class="table table-bordered">
-      <tr *ngFor="let linha of matriz">
-        <th *ngFor="let coluna of linha" style="background-color:{{ coluna.cor }};">
-          {{ coluna.numero }}
-        </th>
-      </tr>
-    </table>
-  </div>
-  <div class="w-25 mt-3 d-flex justify-content-center">
-    <dl id="lista">
-      <dt *ngFor="let avalanche of listaDeAvalanches">
-        {{ avalanche }}
-      </dt>
-    </dl>
-  </div>
+  <table id="matrix" class="table table-bordered">
+    <tr *ngFor="let linha of matriz">
+      <th *ngFor="let coluna of linha" style="background-color:{{ coluna.cor }};">
+        {{ coluna.numero }}
+      </th>
+    </tr>
+  </table>
+
+  <mat-list role="list" id="lista">
+    <mat-list-item role="listitem" *ngFor="let avalanche of listaDeAvalanches">
+      {{ avalanche }}
+    </mat-list-item>
+  </mat-list>
 </mat-card>

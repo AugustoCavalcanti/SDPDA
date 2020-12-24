@@ -32,10 +32,7 @@
         </div>
 
         <div>
-          <button mat-flat-button color="primary" (click)="GerarMatrix(dadosMatriz)">Gerar Tabela</button>
-          <button *ngIf="buttom == 'alterar'" mat-flat-button color="primary" (click)="AlteraCelula()">Alterar célula aleatória</button>
-          <button *ngIf="buttom == 'prosseguir'" mat-flat-button color="primary" (click)="Avalanche()">Prosseguir</button>
-          <button mat-flat-button color="primary" (click)="AlteraCelulaContinua()">Repetição continua</button>
+          <button mat-flat-button color="primary" (click)="GerarMatrix(dadosMatriz)">Iniciar</button>
         </div>
 
       </mat-card>
@@ -44,7 +41,7 @@
   </mat-card-content>
 </mat-card>
 <mat-card>
-  <div class="col-6">
+
     <table id="matrix" class="table table-bordered">
       <tr *ngFor="let linha of matriz">
         <th *ngFor="let coluna of linha" style="background-color:{{ coluna.cor }};">
@@ -52,12 +49,11 @@
         </th>
       </tr>
     </table>
-  </div>
-  <div class="w-25 mt-3 d-flex justify-content-center">
-    <dl id="lista">
-      <dt *ngFor="let avalanche of listaDeAvalanches">
+
+    <mat-list role="list" id="lista">
+      <mat-list-item role="listitem" *ngFor="let avalanche of listaDeAvalanches">
         {{ avalanche }}
-      </dt>
-    </dl>
-  </div>
+      </mat-list-item>
+    </mat-list>
+
 </mat-card>

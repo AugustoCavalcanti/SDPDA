@@ -40,15 +40,7 @@ export class SimuladorSemAnimacaoComponent implements OnInit {
         this.matriz[b].push(new Celula(x, 'white'));
       }
     }
-  }
-
-  AlteraCelula() {
-    this.colun = Math.floor((Math.random() * this.grid - 1) + 1);
-    this.line = Math.floor((Math.random() * this.grid - 1) + 1);
-    this.matriz[this.line][this.colun].numero++;
-    this.repeticao++;
-
-    this.Verifica();
+    this.AlteraCelulaContinua();
   }
 
   Verifica() {
