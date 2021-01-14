@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Celula} from "../celula.model";
+import {Celula} from '../celula.model';
 
 @Component({
   selector: 'app-simulador-com-animacao',
